@@ -1,0 +1,12 @@
+{ "name": "interview_questions"
+, "description": "interview questions"
+, "version": "0.0.1"
+, "private": true
+, "dependencies": {
+    "preludejs": "git://github.com/loop-recur/PreludeJS.git"
+  }
+, "devDependencies": {
+    "mocha": "*"
+  , "chai": "*"
+  }
+}

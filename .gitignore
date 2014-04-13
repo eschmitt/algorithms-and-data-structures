@@ -1,0 +1,11 @@
+# Ignore specific files
+.DS_Store
+
+# Use wildcards to ignore types of files
+*~
+*.swp
+*.log
+
+# Ignore directories and files in a directory.
+# example: tmp/**/* 
+node_modules
