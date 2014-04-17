@@ -4,6 +4,7 @@
 , "private": true
 , "dependencies": {
     "preludejs": "git://github.com/loop-recur/PreludeJS.git"
+  , "string-utilties": "git://github.com/eschmitt/string-utilities.git"
   }
 , "devDependencies": {
     "mocha": "*"
