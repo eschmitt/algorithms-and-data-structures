@@ -21,9 +21,21 @@ var insertIntoEveryPosition = function (c, s) {
       }
       return permutations;
     }
+
+//+ reverse :: String -> String
+  , reverse = function (s) {
+      var reversed = ''
+        , i = s.length - 1
+        ;
+      for(i; i>= 0; i--) {
+        reversed += s[i];
+      }
+      return reversed;
+    }
   ;
 
 module.exports = {
   getPermutations: getPermutations
 , insertIntoEveryPosition: insertIntoEveryPosition
+, reverse: reverse
 }

@@ -15,3 +15,12 @@ describe('insertIntoEveryPosition', function () {
     expect(strings.insertIntoEveryPosition('c', 'ab')).to.include.members(['cab', 'acb', 'abc'])
   });
 });
+
+describe('reverse', function () {
+  it('returns a string in reverse order', function () {
+    expect(strings.reverse('a')).to.equal('a');
+    expect(strings.reverse('ab')).to.equal('ba');
+    expect(strings.reverse('abc')).to.equal('cba');
+  });
+});
+
