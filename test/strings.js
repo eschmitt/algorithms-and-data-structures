@@ -32,3 +32,11 @@ describe('hasUniqueChars', function () {
   });
 });
 
+describe('isAnagram', function () {
+  it('returns true if the second string is an anagram of the first, otherwise it returns false.', function () {
+    expect(strings.isAnagram('cinema', 'iceman')).to.equal(true);
+    expect(strings.isAnagram('cinema', 'foo')).to.equal(false);
+    expect(strings.isAnagram('cinemafoo', 'iceman')).to.equal(false);
+  });
+});
+
