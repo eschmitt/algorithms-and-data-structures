@@ -49,15 +49,14 @@ var insertIntoEveryPosition = function (c, s) {
 
 //+ isAnagram :: String -> String -> Bool
   , isAnagram = function (s1, s2) {
-      var i = 0;
-      if (s1.length !== s2.length){
-        return false;
-      }
-      for (i; i<s2.length; i++) {
-        if (s1.indexOf(s2[i]) === -1) {
-          return false;
-        }
-      }
+      var i = 0
+        //sortChars :: String -> String
+        , sortChars = function (s) {
+            return s.toLowerCase().split('').sort().join('');
+          }
+        ;
+      if (s1.length !== s2.length){ return false; }
+      if (sortChars(s1) !== sortChars(s2)) { return false; }
       return true;
     }
   ;
