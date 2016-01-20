@@ -32,10 +32,25 @@ var insertIntoEveryPosition = function (c, s) {
       }
       return reversed;
     }
+
+//+ hasUniqueChars :: String -> Bool
+  , hasUniqueChars = function (s) {
+      var chars = []
+        , i = 0
+        ;
+      if (s.length > 256) { return false; }
+      for (i; i < s.length; i++) {
+        var val = s.charAt(i);
+        if (chars[val]) { return false; }
+        chars[val] = true;
+      }
+      return true;
+    }
   ;
 
 module.exports = {
   getPermutations: getPermutations
 , insertIntoEveryPosition: insertIntoEveryPosition
 , reverse: reverse
+, hasUniqueChars: hasUniqueChars
 }

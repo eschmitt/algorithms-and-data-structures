@@ -24,3 +24,11 @@ describe('reverse', function () {
   });
 });
 
+describe('hasUniqueChars', function () {
+  it('returns true if all characters in string are unique, otherwise, it returns false.', function () {
+    expect(strings.hasUniqueChars('a')).to.equal(true);
+    expect(strings.hasUniqueChars('aa')).to.equal(false);
+    expect(strings.hasUniqueChars('abc12~')).to.equal(true);
+  });
+});
+
