@@ -16,6 +16,7 @@ describe('insertIntoEveryPosition', function () {
   });
 });
 
+// Cracking the Coding Interview: 1.1 pg 73
 describe('reverse', function () {
   it('returns a string in reverse order', function () {
     expect(strings.reverse('a')).to.equal('a');
@@ -24,6 +25,7 @@ describe('reverse', function () {
   });
 });
 
+// Cracking the Coding Interview: 1.1 pg 73
 describe('hasUniqueChars', function () {
   it('returns true if all characters in string are unique, otherwise, it returns false.', function () {
     expect(strings.hasUniqueChars('a')).to.equal(true);
@@ -42,3 +44,13 @@ describe('isAnagram', function () {
   });
 });
 
+// Cracking the Coding Interview: 1.3, pg 73
+describe('isPermutation', function () {
+  it('is a function', function () {
+    expect(strings.isPermutation).to.be.a('function');
+  });
+  xit('throws an error if the parameters are not strings', function () {
+  });
+  xit('returns true if the second string is a permutation of the first', function () {
+  });
+});
