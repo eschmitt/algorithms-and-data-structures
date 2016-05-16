@@ -4,6 +4,7 @@
 , "private": true
 , "dependencies": {
     "preludejs": "git://github.com/loop-recur/PreludeJS.git"
+  , "ramda": "0.19.x"
   , "string-utilties": "git://github.com/eschmitt/string-utilities.git"
   }
 , "devDependencies": {

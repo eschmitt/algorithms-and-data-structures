@@ -1,12 +1,14 @@
 var expect = require('chai').expect
+  , assert = require('chai').assert
   , strings = require('../data-structures/strings.js')
   ;
 
 describe('getPermutations', function() {
   it('returns all permutations for a given string', function() {
-    expect(strings.getPermutations('a')).to.eql(['a']);
-    expect(strings.getPermutations('ab')).to.include.members(['ab', 'ba']);
-    expect(strings.getPermutations('abc')).to.include.members(['cab', 'acb', 'abc', 'cba', 'bca', 'bac']);
+    assert.sameMembers(strings.getPermutations('a'), ['a']);
+    assert.sameMembers(strings.getPermutations('ab'), ['ab', 'ba']);
+    assert.sameMembers(strings.getPermutations('abc'), ['cab', 'acb', 'abc', 'cba', 'bca', 'bac']);
+    assert.sameMembers(strings.getPermutations('apps'), ['apps', 'apsp', 'aspp', 'ppsa', 'ppas', 'psap', 'pspa', 'pasp', 'paps', 'sapp', 'spap', 'sppa']);
   });
 });
 

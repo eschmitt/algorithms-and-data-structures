@@ -1,11 +1,10 @@
-var _ = require('preludejs')
-  , insert = require('string-utilities').insert
-  ;
+var _ = require('ramda');
 
 //+ insertIntoEveryPosition :: Char -> String -> String
-var insertIntoEveryPosition = function (c, s) {
-      return _.concat(_.map(insert(s, c), s), [s + c]);
-    }.autoCurry()
+var insertIntoEveryPosition = _.curry(function (c, s) {
+      //return _.concat(_.map(insert(s, c), s), [s + c]);
+      return _.concat(_.map(_.insert(_.__, s, c), s), [s + c]);
+    })
 
 //+ merge :: Char -> [String] -> [String]
   , merge = function (c, ps) {
@@ -13,13 +12,23 @@ var insertIntoEveryPosition = function (c, s) {
     }
 
 //+ getPermutations :: String -> [String]
-  , getPermutations = function (s) {
-      var permutations = [];
-      if (s.length === 1) { permutations.push(s); }
-      else if (s.length > 1) {
-        permutations = merge(_.last(s), getPermutations(_.take(s.length - 1, s)));
+  , getPermutations = function (string) {
+      function permute(s, combination, permutations) {
+        if (!s.length) {
+          //return permutations.push(combination);
+          return permutations[combination] = true;
+        }
+
+        for (var i = 0; i < s.length; i++) {
+          permute( (s.slice(0, i) + s.slice(i+1))
+                 , combination.concat(s[i])
+                 , permutations
+                 );
+        }
+        return Object.keys(permutations);
       }
-      return permutations;
+
+      return permute(string, '', {});
     }
 
 //+ reverse :: String -> String

@@ -4,7 +4,7 @@ var getValuesInRange = function (list, range) {
         , stop = list.length - 1
         ;
       while (stop >= start) {
-        if ()
+        if (true) {}
       }
       return null;
     }
