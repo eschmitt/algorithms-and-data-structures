@@ -1,15 +1,4 @@
-var _ = require('ramda');
-
-//+ insertIntoEveryPosition :: Char -> String -> String
-var insertIntoEveryPosition = _.curry(function (c, s) {
-      //return _.concat(_.map(insert(s, c), s), [s + c]);
-      return _.concat(_.map(_.insert(_.__, s, c), s), [s + c]);
-    })
-
-//+ merge :: Char -> [String] -> [String]
-  , merge = function (c, ps) {
-      return _.flatten(_.map(insertIntoEveryPosition(c), ps));
-    }
+var _ = require('ramda')
 
 //+ getPermutations :: String -> [String]
   , getPermutations = function (string) {
@@ -72,7 +61,6 @@ var insertIntoEveryPosition = _.curry(function (c, s) {
 
 module.exports = {
   getPermutations: getPermutations
-, insertIntoEveryPosition: insertIntoEveryPosition
 , reverse: reverse
 , hasUniqueChars: hasUniqueChars
 , isAnagram: isAnagram

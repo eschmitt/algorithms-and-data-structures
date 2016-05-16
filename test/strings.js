@@ -12,12 +12,6 @@ describe('getPermutations', function() {
   });
 });
 
-describe('insertIntoEveryPosition', function () {
-  it('inserts character into every position of string, returning a list of all permutations', function () {
-    expect(strings.insertIntoEveryPosition('c', 'ab')).to.include.members(['cab', 'acb', 'abc'])
-  });
-});
-
 // Cracking the Coding Interview: 1.1 pg 73
 describe('reverse', function () {
   it('returns a string in reverse order', function () {
@@ -48,7 +42,7 @@ describe('isAnagram', function () {
 
 // Cracking the Coding Interview: 1.3, pg 73
 describe('isPermutation', function () {
-  it('is a function', function () {
+  xit('is a function', function () {
     expect(strings.isPermutation).to.be.a('function');
   });
   xit('throws an error if the parameters are not strings', function () {
