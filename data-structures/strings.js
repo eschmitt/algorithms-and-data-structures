@@ -1,27 +1,26 @@
-var _ = require('ramda')
+var _ = require('ramda');
 
-//+ getPermutations :: String -> [String]
-  , getPermutations = function (string) {
-      function permute(s, combination, permutations) {
-        if (!s.length) {
-          //return permutations.push(combination);
-          return permutations[combination] = true;
-        }
-
-        for (var i = 0; i < s.length; i++) {
-          permute( (s.slice(0, i) + s.slice(i+1))
-                 , combination.concat(s[i])
-                 , permutations
-                 );
-        }
-        return Object.keys(permutations);
-      }
-
-      return permute(string, '', {});
+// getPermutations :: String -> [String]
+function getPermutations(string) {
+  function permute(s, combination, permutations) {
+    if (!s.length) {
+      return permutations[combination] = true;
     }
 
+    for (var i = 0; i < s.length; i++) {
+      permute( (s.slice(0, i) + s.slice(i+1))
+             , combination.concat(s[i])
+             , permutations
+             );
+    }
+    return Object.keys(permutations);
+  }
+
+  return permute(string, '', {});
+}
+
 //+ reverse :: String -> String
-  , reverse = function (s) {
+var reverse = function (s) {
       var reversed = ''
         , i = s.length - 1
         ;
