@@ -19,43 +19,43 @@ function getPermutations(string) {
   return permute(string, '', {});
 }
 
-//+ reverse :: String -> String
-var reverse = function (s) {
-      var reversed = ''
-        , i = s.length - 1
-        ;
-      for(i; i>= 0; i--) {
-        reversed += s[i];
-      }
-      return reversed;
-    }
+// reverse :: String -> String
+function reverse(s) {
+  var reversed = ''
+    , i = s.length - 1
+    ;
+  for(i; i>= 0; i--) {
+    reversed += s[i];
+  }
+  return reversed;
+}
 
-//+ hasUniqueChars :: String -> Bool
-  , hasUniqueChars = function (s) {
-      var chars = []
-        , i = 0
-        ;
-      if (s.length > 256) { return false; }
-      for (i; i < s.length; i++) {
-        var val = s.charAt(i);
-        if (chars[val]) { return false; }
-        chars[val] = true;
-      }
-      return true;
-    }
+// hasUniqueChars :: String -> Bool
+function hasUniqueChars(s) {
+  var chars = []
+    , i = 0
+    ;
+  if (s.length > 256) { return false; }
+  for (i; i < s.length; i++) {
+    var val = s.charAt(i);
+    if (chars[val]) { return false; }
+    chars[val] = true;
+  }
+  return true;
+}
 
-//+ isAnagram :: String -> String -> Bool
-  , isAnagram = function (s1, s2) {
-      var i = 0
-        //sortChars :: String -> String
-        , sortChars = function (s) {
-            return s.toLowerCase().split('').sort().join('');
-          }
-        ;
-      if (s1.length !== s2.length){ return false; }
-      if (sortChars(s1) !== sortChars(s2)) { return false; }
-      return true;
-    }
+// isAnagram :: String -> String -> Bool
+function isAnagram(s1, s2) {
+  var i = 0
+    //sortChars :: String -> String
+    , sortChars = function (s) {
+        return s.toLowerCase().split('').sort().join('');
+      }
+    ;
+  if (s1.length !== s2.length){ return false; }
+  if (sortChars(s1) !== sortChars(s2)) { return false; }
+  return true;
+}
   ;
 
 module.exports = {
