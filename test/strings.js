@@ -8,6 +8,8 @@ describe('getPermutations', function() {
     assert.sameMembers(strings.getPermutations('a'), ['a']);
     assert.sameMembers(strings.getPermutations('ab'), ['ab', 'ba']);
     assert.sameMembers(strings.getPermutations('abc'), ['cab', 'acb', 'abc', 'cba', 'bca', 'bac']);
+  });
+  it('returns only unique permutations', function() {
     assert.sameMembers(strings.getPermutations('apps'), ['apps', 'apsp', 'aspp', 'ppsa', 'ppas', 'psap', 'pspa', 'pasp', 'paps', 'sapp', 'spap', 'sppa']);
   });
 });
