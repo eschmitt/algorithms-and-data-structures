@@ -1,14 +1,16 @@
-{ "name": "interview_questions"
-, "description": "interview questions"
-, "version": "0.0.1"
-, "private": true
-, "dependencies": {
-    "preludejs": "git://github.com/loop-recur/PreludeJS.git"
-  , "ramda": "0.19.x"
-  , "string-utilties": "git://github.com/eschmitt/string-utilities.git"
-  }
-, "devDependencies": {
+{
+  "name": "interview_questions",
+  "description": "interview questions",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "preludejs": "git://github.com/loop-recur/PreludeJS.git",
+    "ramda": "0.19.x",
+    "string-utilties": "git://github.com/eschmitt/string-utilities.git"
+  },
+  "devDependencies": {
+    "babel-register": "^6.8.0",
+    "chai": "*",
     "mocha": "*"
-  , "chai": "*"
   }
 }
