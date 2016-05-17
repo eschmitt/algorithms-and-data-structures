@@ -12,5 +12,8 @@
     "babel-register": "^6.8.0",
     "chai": "*",
     "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-register"
   }
 }

@@ -3,7 +3,7 @@ var expect = require('chai').expect
   ;
 
 describe('getValuesInRange', function() {
-  it('Returns a list of values that are within range', function() {
+  xit('Returns a list of values that are within range', function() {
     var list = [2, 4, 6, 8, 10]
       , range = [5, 10]
       ;
