@@ -1,22 +1,49 @@
 var _ = require('ramda');
 
+// permute :: String -> {String: Boolean} -> String -> [String]
+//var permute = _.curry(function (combination, permutations, string) {
+  // callPermute :: String -> ({String: Bool} -> Char -> Int -> String) -> IO
+  /*
+  var callPermute = function (combination) {
+    return function (acc, item, i, s) {
+      return permute( _.concat(combination, item)
+                    , acc
+                    , _.concat(_.slice(0, i, s), _.slice(i + Infinity, s))
+                    );
+    };
+  };
+  var storeCombination = function () { 
+    return permutations[combination] = true;
+  };
+  */
+  // should be an ifElse, incorporating compose below
+  //_.when(_.not(string.length), storeCombination);
+
+  /*
+  return _.compose( _.keys
+                  , _.addIndex(_.reduce(callPermute(''), {}))
+                  ) (string.split(''));
+});
+*/
+
 // getPermutations :: String -> [String]
+//var getPermutations = permute('', {});
 function getPermutations(string) {
-  function permute(s, combination, permutations) {
+  function permute(combination, permutations, s) {
     if (!s.length) {
       return permutations[combination] = true;
     }
 
     for (var i = 0; i < s.length; i++) {
-      permute( (s.slice(0, i) + s.slice(i+1))
-             , combination.concat(s[i])
+      permute( combination.concat(s[i])
              , permutations
+             , (s.slice(0, i) + s.slice(i+1))
              );
     }
     return Object.keys(permutations);
   }
 
-  return permute(string, '', {});
+  return permute('', {}, string);
 }
 
 // reverse :: String -> String
@@ -56,7 +83,6 @@ function isAnagram(s1, s2) {
   if (sortChars(s1) !== sortChars(s2)) { return false; }
   return true;
 }
-  ;
 
 module.exports = {
   getPermutations: getPermutations
