@@ -14,6 +14,7 @@ describe('getValuesInRange', function() {
 
 describe('maxLevelsNested', function () {
   var maxLevelsNested = arrays.maxLevelsNested;
+
   it('exists as a Function', function () {
     assert.isFunction(maxLevelsNested);
   });
@@ -30,6 +31,6 @@ describe('maxLevelsNested', function () {
     assert.equal(maxLevelsNested([ [5], [[]] ]), 2);
   });
   it('returns 4 for a list containing a 3-level nested list', function () {
-    assert.equal(maxLevelsNested([ [10, 20], [[30, [40]]] ]), 4)
+    assert.equal(maxLevelsNested([ [10, 20], [[30, [40]]] ]), 4);
   });
 });
