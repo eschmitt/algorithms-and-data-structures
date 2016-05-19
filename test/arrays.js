@@ -13,22 +13,23 @@ describe('getValuesInRange', function() {
 });
 
 describe('maxLevelsNested', function () {
+  var maxLevelsNested = arrays.maxLevelsNested;
   it('exists as a Function', function () {
-    assert.isFunction(arrays.maxLevelsNested);
+    assert.isFunction(maxLevelsNested);
   });
   it('returns 0 for an empty list', function () {
-    assert.equal(arrays.maxLevelsNested([]), 0);
+    assert.equal(maxLevelsNested([]), 0);
   });
   it('returns 0 for a nested empty list', function () {
-    assert.equal(arrays.maxLevelsNested([[[]]]), 0);
+    assert.equal(maxLevelsNested([[[]]]), 0);
   });
   it('returns 1 for a list of numbers', function () {
-    assert.equal(arrays.maxLevelsNested([10, 20, 30, 40]), 1);
+    assert.equal(maxLevelsNested([10, 20, 30, 40]), 1);
   });
   it('returns 2 for a list containing a nested list and an empty list', function () {
-    assert.equal(arrays.maxLevelsNested([ [5], [[]] ]), 2);
+    assert.equal(maxLevelsNested([ [5], [[]] ]), 2);
   });
   it('returns 4 for a list containing a 3-level nested list', function () {
-    assert.equal(arrays.maxLevelsNested([ [10, 20], [[30, [40]]] ]), 4)
+    assert.equal(maxLevelsNested([ [10, 20], [[30, [40]]] ]), 4)
   });
 });
