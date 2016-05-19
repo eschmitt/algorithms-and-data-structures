@@ -16,7 +16,16 @@ describe('maxLevelsNested', function () {
   it('exists as a Function', function () {
     assert.isFunction(arrays.maxLevelsNested);
   });
-  xit('returns the number of the deepest level that contains a non-array value', function () {
+  it('returns 0 for an empty list', function () {
     assert.equal(arrays.maxLevelsNested([]), 0);
+  });
+  it('returns 0 for a nested empty list', function () {
+    assert.equal(arrays.maxLevelsNested([[[]]]), 0);
+  });
+  it('returns 1 for a list of numbers', function () {
+    assert.equal(arrays.maxLevelsNested([10, 20, 30, 40]), 1);
+  });
+  it('returns 2 for a list containing a nested list and an empty list', function () {
+    assert.equal(arrays.maxLevelsNested([ [5], [[]] ]), 2);
   });
 });

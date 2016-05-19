@@ -11,7 +11,34 @@ var getValuesInRange = function (list, range) {
 
 //  maxLevelsNested :: [a] -> Int
 var maxLevelsNested = function (list) {
-  
+  var maxLevels = 0
+    , recurseNestedLevels = function (xs, level) {
+        if (!Array.isArray(xs)) { 
+          return level;
+        }
+
+        if (!xs.length) {
+          level = 0
+          return level;
+        }
+        
+        xs.forEach(function (item) {
+          var currentLevel = recurseNestedLevels(item, level + 1);
+          if (currentLevel > maxLevels) { maxLevels = currentLevel; }
+        });
+      }
+    ;
+    // [[[]]], 0
+    //
+    // recurse([[]], 1) => undefined
+    // maxLevels = 0
+    // 
+    // recurse([], 2) => 0
+    // maxLevels = 0
+
+  recurseNestedLevels(list, 0);
+
+  return maxLevels;
 };
 
 module.exports = {
