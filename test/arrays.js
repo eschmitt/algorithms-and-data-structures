@@ -28,4 +28,7 @@ describe('maxLevelsNested', function () {
   it('returns 2 for a list containing a nested list and an empty list', function () {
     assert.equal(arrays.maxLevelsNested([ [5], [[]] ]), 2);
   });
+  it('returns 4 for a list containing a 3-level nested list', function () {
+    assert.equal(arrays.maxLevelsNested([ [10, 20], [[30, [40]]] ]), 4)
+  });
 });
