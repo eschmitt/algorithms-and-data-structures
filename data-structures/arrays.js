@@ -41,7 +41,13 @@ var maxLevelsNested = function (list) {
   return maxLevels;
 };
 
+//  asyncMap :: [Function] -> Function -> a
+var asyncMap = function (tasks, f) {
+
+};
+
 module.exports = {
   getValuesInRange: getValuesInRange
 , maxLevelsNested: maxLevelsNested
+, asyncMap: asyncMap
 }

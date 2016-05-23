@@ -34,3 +34,12 @@ describe('maxLevelsNested', function () {
     assert.equal(maxLevelsNested([ [10, 20], [[30, [40]]] ]), 4);
   });
 });
+
+describe('asyncMap', function () {
+  var asyncMap = arrays.asyncMap;
+
+  it('exists as a function', function () {
+    assert.isFunction(asyncMap);
+  });
+
+});
