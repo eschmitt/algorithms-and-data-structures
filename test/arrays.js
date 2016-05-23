@@ -45,4 +45,25 @@ describe('asyncMap', function () {
   it('takes 2 inputs', function () {
     assert.lengthOf(asyncMap, 2);
   });
+
+  it('passes completed tasks to its callback', function (done) {
+    // These functions are not really async, but work for testing purposes
+    function wait2For2(f) {
+      setTimeout(function () {
+        f(2);
+      }, 200, done.fail);
+    }
+    
+    function wait3For1(f) {
+      setTimeout(function () {
+        f(1);
+      }, 300, done.fail);
+    }
+
+    asyncMap([wait2For2, wait3For1], function (xs) {
+      assert.deepEqual(xs, [2, 1]);
+      assert.lengthOf(xs, 2);
+      done();
+    })
+  });
 });
