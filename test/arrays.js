@@ -42,4 +42,7 @@ describe('asyncMap', function () {
     assert.isFunction(asyncMap);
   });
 
+  it('takes 2 inputs', function () {
+    assert.lengthOf(asyncMap, 2);
+  });
 });
