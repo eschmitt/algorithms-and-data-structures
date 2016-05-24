@@ -1,3 +1,5 @@
+var _ = require('ramda');
+
 //+ getValuesInRange :: [a] -> [a] -> [a]
 var getValuesInRange = function (list, range) {
       var start = 0
@@ -41,7 +43,8 @@ var maxLevelsNested = function (list) {
   return maxLevels;
 };
 
-//  asyncMap :: [Function] -> Function -> a
+//  Task :: ( (a -> b) -> IO )
+//  asyncMap :: [Task] -> (a -> IO) -> IO
 var asyncMap = function (tasks, f) {
   // makePromise :: (a -> b) -> Promise
   var makePromise = function (task) {
