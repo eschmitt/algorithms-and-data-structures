@@ -39,15 +39,17 @@ describe('asyncMap', function () {
   var asyncMap = arrays.asyncMap;
   
   // makeTasks :: (err -> IO) -> Int -> [( (a -> b) -> IO )]
-  function makeTasks(done, n) {
-    var tasks
-      , taskParams = [
-          [2, 200]
-        , [1, 300]
+  function makeTasks(done) {
+    var taskParams = [
+          [1, 300]
+        , [2, 200]
+        , [3, 100]
+        , [4, 500]
+        , [5, 100]
         ]
       ;
 
-    // These functions are not really async, but work for testing purposes
+    // Task functions are not really async, but work for testing purposes
     // generateTask :: [Int, Int] -> ( (a -> b) -> IO )
     function generateTask(ps) {
       return function (f) {
@@ -55,9 +57,7 @@ describe('asyncMap', function () {
       };
     }
 
-    tasks = taskParams.map(generateTask);
-
-    return n ? tasks.slice(0, n) : tasks;
+    return taskParams.map(generateTask);
   }
 
   it('exists as a function', function () {
@@ -69,20 +69,19 @@ describe('asyncMap', function () {
   });
 
   it('passes completed tasks to its callback', function (done) {
-    var tasks = makeTasks(done, 2);
+    var tasks = makeTasks(done);
 
     asyncMap(tasks, function (xs) {
-      assert.deepEqual(xs, [2, 1]);
-      assert.lengthOf(xs, 2);
+      assert.deepEqual(xs, [1, 2, 3, 4, 5]);
       done();
     })
   });
 
   it('passes completed tasks to its callback in the correct order', function (done) {
-    var tasks = makeTasks(done, 2).reverse();
+    var tasks = makeTasks(done).reverse();
 
     asyncMap(tasks, function (xs) {
-      assert.deepEqual(xs, [1, 2]);
+      assert.deepEqual(xs, [5, 4, 3, 2, 1]);
       done();
     });
   });
