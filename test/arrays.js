@@ -37,6 +37,28 @@ describe('maxLevelsNested', function () {
 
 describe('asyncMap', function () {
   var asyncMap = arrays.asyncMap;
+  
+  // makeTasks :: (err -> IO) -> Int -> [( (a -> b) -> IO )]
+  function makeTasks(done, n) {
+    var tasks
+      , taskParams = [
+          [2, 200]
+        , [1, 300]
+        ]
+      ;
+
+    // These functions are not really async, but work for testing purposes
+    // generateTask :: [Int, Int] -> ( (a -> b) -> IO )
+    function generateTask(ps) {
+      return function (f) {
+        setTimeout(function () { f(ps[0]); }, ps[1], done.fail);
+      };
+    }
+
+    tasks = taskParams.map(generateTask);
+
+    return n ? tasks.slice(0, n) : tasks;
+  }
 
   it('exists as a function', function () {
     assert.isFunction(asyncMap);
@@ -47,23 +69,21 @@ describe('asyncMap', function () {
   });
 
   it('passes completed tasks to its callback', function (done) {
-    // These functions are not really async, but work for testing purposes
-    function wait2For2(f) {
-      setTimeout(function () {
-        f(2);
-      }, 200, done.fail);
-    }
-    
-    function wait3For1(f) {
-      setTimeout(function () {
-        f(1);
-      }, 300, done.fail);
-    }
+    var tasks = makeTasks(done, 2);
 
-    asyncMap([wait2For2, wait3For1], function (xs) {
+    asyncMap(tasks, function (xs) {
       assert.deepEqual(xs, [2, 1]);
       assert.lengthOf(xs, 2);
       done();
     })
+  });
+
+  xit('passes completed tasks to its callback in the correct order', function (done) {
+    var tasks = makeTasks(done, 2).reverse();
+
+    asyncMap(tasks, function (xs) {
+      assert.deepEqual(xs, [1, 2]);
+      done();
+    });
   });
 });
