@@ -78,7 +78,7 @@ describe('asyncMap', function () {
     })
   });
 
-  xit('passes completed tasks to its callback in the correct order', function (done) {
+  it('passes completed tasks to its callback in the correct order', function (done) {
     var tasks = makeTasks(done, 2).reverse();
 
     asyncMap(tasks, function (xs) {
