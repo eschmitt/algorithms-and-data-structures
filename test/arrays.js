@@ -70,19 +70,21 @@ describe('asyncMap', function () {
 
   it('passes completed tasks to its callback', function (done) {
     var tasks = makeTasks(done);
-
-    asyncMap(tasks, function (xs) {
+    var test = function (xs) {
       assert.deepEqual(xs, [1, 2, 3, 4, 5]);
       done();
-    })
+    }
+
+    asyncMap(test, tasks);
   });
 
   it('passes completed tasks to its callback in the correct order', function (done) {
     var tasks = makeTasks(done).reverse();
-
-    asyncMap(tasks, function (xs) {
+    var test = function (xs) {
       assert.deepEqual(xs, [5, 4, 3, 2, 1]);
       done();
-    });
+    }
+
+    asyncMap(test, tasks);
   });
 });

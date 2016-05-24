@@ -43,18 +43,25 @@ var maxLevelsNested = function (list) {
   return maxLevels;
 };
 
+
+// makePromise :: (a -> b) -> Promise
+var makePromise = function (task) {
+  return new Promise(function (resolve, reject) {
+    task(resolve);
+  });
+}
+
+//  Task :: ( (a -> b) -> IO )
+//  asyncMap :: (a -> IO) -> [Task] -> IO
+var asyncMap = function (f, tasks) {
+  Promise.all(tasks.map(makePromise)).then(f);
+}
+
 //  Task :: ( (a -> b) -> IO )
 //  asyncMap :: [Task] -> (a -> IO) -> IO
-var asyncMap = function (tasks, f) {
-  // makePromise :: (a -> b) -> Promise
-  var makePromise = function (task) {
-    return new Promise(function (resolve, reject) {
-      task(resolve);
-    });
-  }
-
-  Promise.all(tasks.map(makePromise)).then(f);
-};
+//var asyncMap = function (tasks, f) {
+  //Promise.all(tasks.map(makePromise)).then(f);
+//};
 
 module.exports = {
   getValuesInRange: getValuesInRange
