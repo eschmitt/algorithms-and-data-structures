@@ -53,10 +53,80 @@ describe('isPermutation', function () {
   });
 });
 
+// OICE
+// Outputs: Bool
+// Inputs: String
+// Constraints & Complexities: none
+// Examples:
+//    ''                      => True
+//    '(x + y) - (4)'         => True
+//    '[({})]'                => True
+//    '(((10)()) ((?)(:)))'   => True
+//    '(50)('                 => False
+//    '[(])'                  => False
+// Edge Cases: ''
+
+// Diagram (whiteboard)
+
+// Plan:
+//    iterate over the string
+//    if character is an opening bracket push it to a stack
+//    if character is a closing bracket compare to last opening bracket
+//      if it matches the type of bracket continue on
+//      if it doesn't match the type of bracket, return false
+//    after iteration, if the stack is not empty, return false
+
+// Pseudocode:
+//    create stack variable: openingBrackets
+//    iterate over the string
+//      if character is an opening bracket push it to a stack
+//      if character is a closing bracket compare to last opening bracket
+//        if it matches the type of bracket continue on
+//        else, return false
+//    after iteration
+//      if the stack is not empty, return false
+//      else return true
+
+// verify: '' => true
+//
+// verify: '(x + y) - (4)'
+//    char    stack
+//    '('     [ '(' ]
+//    'x'
+//    ' '
+//    '+'
+//    ' '
+//    'y'
+//    ')'     []
+//    ' '
+//    '-'
+//    ' '
+//    '('     [ '(' ]
+//    '4'
+//    ')'     []
+//    => true
 describe('hasBalancedBrackets', function () {
   var hasBalancedBrackets = strings.hasBalancedBrackets;
+  var tests = [
+    {input: '', expected: true}
+  , {input: '(x + y) - (4)', expected: true}
+  , {input: '[({})]', expected: true} 
+  , {input: '(((10)()) ((?)(:)))', expected: true}
+  , {input: '(50)(', expected: false}
+  , {input: '[(])', expected: false}
+  ];
 
   it('exists as a function', function () {
     assert.isFunction(hasBalancedBrackets);
-  })
+  });
+  
+  tests.forEach(function (test) {
+    var description = 'returns ' + test.expected 
+                    + ' for an input of ' + test.input;
+
+    it(description, function () {
+      var actual = hasBalancedBrackets.call(null, test.input);
+      assert.equal(actual, test.expected);
+    });
+  });
 });
