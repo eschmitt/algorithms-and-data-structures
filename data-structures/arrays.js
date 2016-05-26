@@ -43,16 +43,15 @@ var maxLevelsNested = function (list) {
   return maxLevels;
 };
 
-
-// makePromise :: (a -> b) -> Promise
+// makePromise :: ((a -> Promise a) -> IO) -> Promise
 var makePromise = function (f) {
   return new Promise(function (resolve, reject) {
     f(resolve);
   });
 }
 
-//  Task :: ( (a -> b) -> IO )
-//  asyncMap :: (a -> IO) -> [Task] -> IO
+//  Task :: (a -> Promise a) -> IO
+//  asyncMap :: (([a] -> IO), [Task]) -> IO
 var asyncMap = function (f, tasks) {
   Promise.all(tasks.map(makePromise)).then(f);
 }
