@@ -85,9 +85,14 @@ function isAnagram(s1, s2) {
   return true;
 }
 
+// hasBalancedBrackets :: String -> Bool
+function hasBalancedBrackets(s) {
+}
+
 module.exports = {
   getPermutations: getPermutations
 , reverse: reverse
 , hasUniqueChars: hasUniqueChars
 , isAnagram: isAnagram
+, hasBalancedBrackets: hasBalancedBrackets
 };

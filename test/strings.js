@@ -52,3 +52,11 @@ describe('isPermutation', function () {
   xit('returns true if the second string is a permutation of the first', function () {
   });
 });
+
+describe('hasBalancedBrackets', function () {
+  var hasBalancedBrackets = strings.hasBalancedBrackets;
+
+  it('exists as a function', function () {
+    assert.isFunction(hasBalancedBrackets);
+  })
+});
