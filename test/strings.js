@@ -114,6 +114,7 @@ describe('hasBalancedBrackets', function () {
   , {input: '(((10)()) ((?)(:)))', expected: true}
   , {input: '(50)(', expected: false}
   , {input: '[(])', expected: false}
+  , {input: '[]]', expected: false}
   ];
 
   it('exists as a function', function () {

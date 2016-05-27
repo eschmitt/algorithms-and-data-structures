@@ -88,29 +88,27 @@ function isAnagram(s1, s2) {
 // hasBalancedBrackets :: String -> Bool
 function hasBalancedBrackets(s) {
   var openingBrackets = []; 
-  var isBalanced = true;
-  var openingBracket = /[\(\[\{]/;
+  var chr;
   var closingBracket = /[\)\]\}]/;
+  var pairs = {
+    '(': ')'
+  , '{': '}'
+  , '[': ']'
+  };
 
-  function isMatchingPair(opening, closing) {
-    var pair = opening + closing;
-    return { '()': true, '{}': true, '[]': true }[pair];
-  }
-
-  s.trim().split('').forEach(function (char){
-    if (char.match(openingBracket)) { openingBrackets.push(char); }
-    if (char.match(closingBracket)) { 
-      if (!isMatchingPair(openingBrackets.pop(), char)) {
-        isBalanced = false; 
+  for (var i = 0; i < s.length; i++) {
+    chr = s[i];
+    if (pairs[chr]) {
+      openingBrackets.push(chr); 
+    }
+    if (chr.match(closingBracket)) { 
+      if (pairs[openingBrackets.pop()] !== chr) {
+        return false;
       }
     }
-  });
-
-  if (openingBrackets.length) {
-    return false; 
   }
 
-  return isBalanced;
+  return openingBrackets.length ? false : true;
 }
 
 module.exports = {
