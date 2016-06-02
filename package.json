@@ -20,7 +20,7 @@
     ]
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js --recursive --growl",
+    "test": "mocha --compilers js:babel-core/register --recursive --growl",
     "test:watch": "npm run test -- --watch"
   }
 }
